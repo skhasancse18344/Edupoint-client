@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import CourseSummuryCard from "./CourseSummuryCard";
 
 const MainCourses = () => {
@@ -8,11 +8,15 @@ const MainCourses = () => {
   return (
     <div>
       <Row>
-        <Col lg="4">
+        <Col className=" bg-dark ms-3 mt-1" lg="3">
           {courses.map((course) => (
-            <div>
-              <h2>{course.name}</h2>
-            </div>
+            <Link
+              className="pt-3 text-decoration-none text-white"
+              key={course.id}
+              to={`/details/${course.id}`}
+            >
+              <h4 className="mt-5">{course.name}</h4>
+            </Link>
           ))}
         </Col>
 

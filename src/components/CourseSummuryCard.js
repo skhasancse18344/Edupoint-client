@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const CourseSummuryCard = ({ course }) => {
   return (
-    <Col lg="6" className="mt-5">
+    <Col lg="6" className="mt-5 ">
       <Card style={{ width: "18rem" }}>
         <Card.Img variant="top" src={course.image} />
         <Card.Body>
