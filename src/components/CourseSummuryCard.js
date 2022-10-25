@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 const CourseSummuryCard = ({ course }) => {
   return (
-    <Col lg="6" className="mt-5 ">
-      <Card style={{ width: "18rem" }}>
+    <Col lg="5" className="mt-5 ms-1 ">
+      <Card style={{ height: "29rem", width: "18rem" }}>
         <Card.Img variant="top" src={course.image} />
         <Card.Body>
           <Card.Title>{course.name}</Card.Title>
@@ -14,7 +14,7 @@ const CourseSummuryCard = ({ course }) => {
             {course.description.length > 150 ? (
               <p>
                 {course.description.slice(0, 150) + "...."}
-                <Link to={`/details/${course.id}`}>Read More</Link>
+                <Link to={`/details/${course.id}`}>See More</Link>
               </p>
             ) : (
               <p>{course.description}</p>
