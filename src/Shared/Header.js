@@ -9,14 +9,30 @@ const Header = () => {
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Edupoint</Navbar.Brand>
+          <Link className="text-white text-decoration-none pt-1 ms-4" to={"/"}>
+            Edupoint
+          </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#features">Courses</Nav.Link>
-              {/* <Link to={"/"}>Courses</Link> */}
-              <Nav.Link href="#pricing">Blog</Nav.Link>
-              <Nav.Link href="#pricing">FAQ</Nav.Link>
+            <Nav className="me-auto ms-5">
+              <Link
+                className="text-white text-decoration-none  ms-4 pt-1"
+                to={"/"}
+              >
+                Courses
+              </Link>
+              <Link
+                className="text-white text-decoration-none pt-1 ms-4"
+                to={"/blog"}
+              >
+                Blog
+              </Link>
+              <Link
+                className="text-white text-decoration-none pt-1 ms-4"
+                to={"/question"}
+              >
+                FAQ
+              </Link>
             </Nav>
             <Nav>
               <Nav.Link href="#deets">SignIn</Nav.Link>

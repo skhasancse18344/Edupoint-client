@@ -8,7 +8,13 @@ const MainCourses = () => {
   return (
     <div>
       <Row>
-        <Col lg="4">Left Side Courses</Col>
+        <Col lg="4">
+          {courses.map((course) => (
+            <div>
+              <h2>{course.name}</h2>
+            </div>
+          ))}
+        </Col>
 
         <Col lg="8">
           <Row>
