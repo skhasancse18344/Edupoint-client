@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="dark"
+        variant="dark"
+        className="py-4"
+      >
         <Container>
           <Link className="text-white text-decoration-none pt-1 ms-4" to={"/"}>
             Edupoint
@@ -35,8 +43,19 @@ const Header = () => {
               </Link>
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">SignIn</Nav.Link>
-              <Nav.Link href="#deets">SignUp</Nav.Link>
+              <Link
+                className="text-white text-decoration-none pt-1 ms-4"
+                to={"/SignIn"}
+              >
+                Sign In
+              </Link>
+              <Link
+                className="text-white text-decoration-none pt-1 ms-4"
+                to={"/SignUp"}
+              >
+                Sign Up
+              </Link>
+              <p>{user.displayName}</p>
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -14,9 +14,17 @@ const CourseDetail = () => {
           <Card.Text className="w-75 m-auto mt-5 mb-5">
             {details.description}
           </Card.Text>
-          <Button>
+          <Button className="me-3">
             <Link className="text-decoration-none text-white" to={"/"}>
               Go Back To Home
+            </Link>
+          </Button>
+          <Button>
+            <Link
+              className="text-decoration-none text-white"
+              to={`/checkout/${details.id}`}
+            >
+              Checkout
             </Link>
           </Button>
         </Card.Body>
