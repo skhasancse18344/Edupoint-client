@@ -11,12 +11,14 @@ const MainCourses = () => {
         <Col lg="4">Left Side Courses</Col>
 
         <Col lg="8">
-          {courses.map((course) => (
-            <CourseSummuryCard
-              key={course.id}
-              course={course}
-            ></CourseSummuryCard>
-          ))}
+          <Row>
+            {courses.map((course) => (
+              <CourseSummuryCard
+                key={course.id}
+                course={course}
+              ></CourseSummuryCard>
+            ))}
+          </Row>
         </Col>
       </Row>
     </div>
