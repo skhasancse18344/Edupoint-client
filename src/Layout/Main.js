@@ -13,9 +13,7 @@ const Main = () => {
         </Col>
       </Row>
       <Row>
-        <Col>Left Side Nav</Col>
         <Col>
-          <Col>Right Side</Col>
           <Outlet></Outlet>
         </Col>
       </Row>
