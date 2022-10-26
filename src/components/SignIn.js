@@ -10,6 +10,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  const [accepted, setAccepted] = useState(false);
 
   const { signIn } = useContext(AuthContext);
   const handleSubmit = (event) => {
@@ -40,6 +41,9 @@ const SignIn = () => {
       })
       .catch((error) => console.error(error));
   };
+  const handleAccepted = (event) => {
+    setAccepted(event.target.checked);
+  };
   return (
     <div>
       <Form onSubmit={handleSubmit} className="my-5">
@@ -66,10 +70,14 @@ const SignIn = () => {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check
+            type="checkbox"
+            onClick={handleAccepted}
+            label={<>Accept Terms & Conditions</>}
+          />
         </Form.Group>
         <Form.Group className="text-danger mb-4">{error}</Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disabled={!accepted}>
           Submit
         </Button>
         <p className="mt-3">
