@@ -7,6 +7,7 @@ import FAQ from "../../components/FAQ";
 import Checkout from "../../components/Checkout";
 import SignIn from "../../components/SignIn";
 import SignUp from "../../components/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -26,7 +27,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/checkout/:id",
-        element: <Checkout></Checkout>,
+        element: (
+          <PrivateRoute>
+            <Checkout></Checkout>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`https://edupoint-server.vercel.app/checkout/${params.id}`),
       },

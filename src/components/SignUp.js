@@ -10,15 +10,15 @@ const SignUp = () => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
-    // const photoURL = form.photoURL.value;
+    const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
 
     createUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        form.reset();
       })
       .catch((error) => console.error(error));
   };
