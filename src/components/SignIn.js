@@ -1,9 +1,21 @@
-import React from "react";
+import { GoogleAuthProvider } from "firebase/auth";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
 
 const SignIn = () => {
+  const { providerLogin } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+  const handleGoogleSingIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
   return (
     <div>
       <Form className="my-5">
@@ -30,7 +42,9 @@ const SignIn = () => {
         </p>
       </Form>
       <div className="text-center my-5">
-        <Button variant="outline-primary">Sign With Google</Button>
+        <Button variant="outline-primary" onClick={handleGoogleSingIn}>
+          Sign With Google
+        </Button>
         <Button className="ms-3" variant="outline-primary">
           Sign With GitHub
         </Button>

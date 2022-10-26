@@ -16,19 +16,19 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <MainCourses></MainCourses>,
-        loader: () => fetch("http://localhost:5000/courses"),
+        loader: () => fetch("https://edupoint-server.vercel.app/courses"),
       },
       {
         path: "/details/:id",
         element: <CourseDetail></CourseDetail>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/courses/${params.id}`),
+          fetch(`https://edupoint-server.vercel.app/courses/${params.id}`),
       },
       {
         path: "/checkout/:id",
         element: <Checkout></Checkout>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/checkout/${params.id}`),
+          fetch(`https://edupoint-server.vercel.app/checkout/${params.id}`),
       },
       {
         path: "/SignIn",
