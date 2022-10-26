@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const SignIn = () => {
   const [error, setError] = useState();
@@ -41,6 +42,7 @@ const SignIn = () => {
     gitLogin(githubProvider)
       .then((result) => {
         const user = result.user;
+        navigate(from, { replace: true });
         console.log(user);
       })
       .catch((error) => console.error(error));
@@ -53,6 +55,7 @@ const SignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
+        navigate(from, { replace: true });
         console.log(user);
       })
       .catch((error) => console.error(error));
@@ -105,6 +108,7 @@ const SignIn = () => {
       </Form>
       <div className="text-center my-5">
         <Button variant="outline-primary" onClick={handleGoogleSingIn}>
+          <FaGoogle className="me-2"></FaGoogle>
           Sign With Google
         </Button>
         <Button
@@ -112,6 +116,7 @@ const SignIn = () => {
           className="ms-3"
           variant="outline-primary"
         >
+          <FaGithub className="me-2"></FaGithub>
           Sign With GitHub
         </Button>
       </div>
