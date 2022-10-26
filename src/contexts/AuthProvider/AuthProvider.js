@@ -17,14 +17,26 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  //   Login with GitHub
+  const gitLogin = (provider) => {
+    setLoading(true);
+    return signInWithPopup(auth, provider);
+  };
+
+  //   Login with Google
+
   const providerLogin = (provider) => {
     setLoading(true);
     return signInWithPopup(auth, provider);
   };
+
+  //   Create User And Password
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
+
+  //   login with email and password
   const signIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -54,6 +66,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     signIn,
     updateUserProfile,
+    gitLogin,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

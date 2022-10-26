@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -11,6 +11,8 @@ const SignIn = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const [accepted, setAccepted] = useState(false);
+
+  //   Login with User Id And Password
 
   const { signIn } = useContext(AuthContext);
   const handleSubmit = (event) => {
@@ -31,6 +33,20 @@ const SignIn = () => {
         setError(error.message);
       });
   };
+  //   Login with GitHub
+
+  const { gitLogin } = useContext(AuthContext);
+  const githubProvider = new GithubAuthProvider();
+  const handleGithubLogin = () => {
+    gitLogin(githubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
+  //   Login with Google
+
   const { providerLogin } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const handleGoogleSingIn = () => {
@@ -44,6 +60,9 @@ const SignIn = () => {
   const handleAccepted = (event) => {
     setAccepted(event.target.checked);
   };
+
+  //   Login Form
+
   return (
     <div>
       <Form onSubmit={handleSubmit} className="my-5">
@@ -88,7 +107,11 @@ const SignIn = () => {
         <Button variant="outline-primary" onClick={handleGoogleSingIn}>
           Sign With Google
         </Button>
-        <Button className="ms-3" variant="outline-primary">
+        <Button
+          onClick={handleGithubLogin}
+          className="ms-3"
+          variant="outline-primary"
+        >
           Sign With GitHub
         </Button>
       </div>
