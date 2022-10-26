@@ -8,9 +8,11 @@ import Checkout from "../../components/Checkout";
 import SignIn from "../../components/SignIn";
 import SignUp from "../../components/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import ErrorPage from "../../components/ErrorPage";
 
 export const routes = createBrowserRouter([
   {
+    errorElement: <ErrorPage></ErrorPage>,
     path: "/",
     element: <Main></Main>,
     children: [
