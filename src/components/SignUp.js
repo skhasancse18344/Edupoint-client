@@ -1,23 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
 
 const SignUp = () => {
+  const { createUser } = useContext(AuthContext);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    // const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
   return (
     <div>
-      <Form className="my-5">
+      <Form onSubmit={handleSubmit} className="my-5">
         <Form.Group className="mb-3">
           <Form.Label>Full Name</Form.Label>
-          <Form.Control type="name" placeholder="Your Full Name" />
+          <Form.Control name="name" type="text" placeholder="Your Full Name" />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Photo URL</Form.Label>
-          <Form.Control type="photoURL" placeholder="Your Photo URL" />
+          <Form.Control
+            name="photoURL"
+            type="text"
+            placeholder="Your Photo URL"
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
+          <Form.Control name="email" type="email" placeholder="Enter email" />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
@@ -25,7 +47,11 @@ const SignUp = () => {
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control
+            name="password"
+            type="password"
+            placeholder="Password"
+          />
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit

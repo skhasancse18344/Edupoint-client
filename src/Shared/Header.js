@@ -6,10 +6,15 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
 import navIcon from "../Shared/download.png";
-import { FaBeer } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
   return (
     <div>
       <Navbar
@@ -55,29 +60,40 @@ const Header = () => {
               </Link>
             </Nav>
             <Nav className="d-flex align-item-center">
-              {user.photoURL ? (
+              {user?.photoURL ? (
                 <Image
                   className="me-3"
                   style={{ height: "3rem", width: "3rem" }}
                   roundedCircle
-                  src={user.photoURL}
+                  src={user?.photoURL}
                 ></Image>
               ) : (
-                <FaBeer></FaBeer>
+                <FaUser className="text-white fs-3"></FaUser>
               )}
-              <p className="text-white">{user.displayName}</p>
-              <Link
-                className="text-white text-decoration-none pt-1 ms-4"
-                to={"/SignIn"}
-              >
-                Sign In
-              </Link>
-              <Link
-                className="text-white text-decoration-none pt-1 ms-4"
-                to={"/SignUp"}
-              >
-                Sign Up
-              </Link>
+
+              {user?.uid ? (
+                <>
+                  <p className="text-white">{user.displayName}</p>
+                  <button onClick={handleLogOut} className="rounded ms-4">
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    className="text-white text-decoration-none pt-1 ms-4"
+                    to={"/SignIn"}
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    className="text-white text-decoration-none pt-1 ms-4"
+                    to={"/SignUp"}
+                  >
+                    Sign Up
+                  </Link>
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
