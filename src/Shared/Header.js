@@ -87,8 +87,11 @@ const Header = () => {
 
               {user?.uid ? (
                 <>
-                  <p className="text-white">{user.displayName}</p>
-                  <button onClick={handleLogOut} className="rounded ms-4">
+                  <p className="text-white mt-2">{user.displayName}</p>
+                  <button
+                    onClick={handleLogOut}
+                    className="rounded ms-4 px-4 bg-info text-white"
+                  >
                     Logout
                   </button>
                 </>
