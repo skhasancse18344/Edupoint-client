@@ -42,10 +42,10 @@ const SignIn = () => {
     gitLogin(githubProvider)
       .then((result) => {
         const user = result.user;
-        navigate(from, { replace: true });
         console.log(user);
       })
       .catch((error) => console.error(error));
+    navigate(from, { replace: true });
   };
   //   Login with Google
 
@@ -55,10 +55,10 @@ const SignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
-        navigate(from, { replace: true });
         console.log(user);
       })
       .catch((error) => console.error(error));
+    navigate(from, { replace: true });
   };
   const handleAccepted = (event) => {
     setAccepted(event.target.checked);

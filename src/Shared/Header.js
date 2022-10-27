@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -7,8 +7,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
 import navIcon from "../Shared/download.png";
 import { FaUser } from "react-icons/fa";
+import DarkModeToggle from "react-dark-mode-toggle";
 
 const Header = () => {
+  const [isDarkMode, setIsDarkMode] = useState(() => false);
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
@@ -60,6 +62,18 @@ const Header = () => {
               </Link>
             </Nav>
             <Nav className="d-flex align-item-center">
+              {isDarkMode ? (
+                <p className="text-white mt-2">Dark</p>
+              ) : (
+                <p className="text-white mt-2">Light</p>
+              )}
+              <DarkModeToggle
+                className="mx-3 mt-2"
+                onChange={setIsDarkMode}
+                checked={isDarkMode}
+                size={50}
+              />
+
               {user?.photoURL ? (
                 <Image
                   className="me-3"
