@@ -11,7 +11,10 @@ const CourseDetail = () => {
   const details = useLoaderData();
   return (
     <div className="my-5">
-      <Card className="text-center w-50 mx-auto" ref={ref}>
+      <Card
+        className="text-center w-75 w-lg-50 w-md-50 w-sm-100  mx-auto"
+        ref={ref}
+      >
         <Card.Body>
           <div>
             <Pdf targetRef={ref} filename="code-example.pdf">
@@ -27,17 +30,17 @@ const CourseDetail = () => {
           </div>
           <img className="img-fluid" src={details.image} alt="" />
           <Card.Title className="mt-5">{details.name}</Card.Title>
-          <Card.Text className="w-75 m-auto mt-5 mb-5">
+          <Card.Text className="w-50 m-auto mt-5 mb-5">
             {details.description}
           </Card.Text>
-          <Button className="me-3">
+          <Button className="me-3 mt-5">
             <Link className="text-decoration-none text-white" to={"/"}>
               Back To Home
             </Link>
           </Button>
-          <Button>
+          <Button className="me-3 mt-5">
             <Link
-              className="text-decoration-none text-white"
+              className="text-decoration-none text-white mt-5"
               to={`/checkout/${details.id}`}
             >
               ENROLL NOW

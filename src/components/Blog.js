@@ -3,9 +3,6 @@ import React from "react";
 const Blog = () => {
   return (
     <div className="bg-secondary">
-      <div>
-        <div style={{ width: 500, height: 500, background: "blue" }} />
-      </div>
       <div className="text-white p-5">
         <h1>what is cors?</h1>
         <p>
