@@ -24,7 +24,7 @@ const CourseDetail = () => {
               className="text-decoration-none text-white"
               to={`/checkout/${details.id}`}
             >
-              Checkout
+              Get Premium Access
             </Link>
           </Button>
         </Card.Body>

@@ -9,17 +9,17 @@ import { initializeApp } from "firebase/app";
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
-  apiKey: "AIzaSyABgsqk0d7-gm0w5cDdzugHxxdjSgAAywQ",
+  apiKey: process.env.REACT_APP_apiKey,
 
-  authDomain: "edupoint-ab6ad.firebaseapp.com",
+  authDomain: process.env.REACT_APP_authDomain,
 
-  projectId: "edupoint-ab6ad",
+  projectId: process.env.REACT_APP_projectId,
 
-  storageBucket: "edupoint-ab6ad.appspot.com",
+  storageBucket: process.env.REACT_APP_storageBucket,
 
-  messagingSenderId: "384860053389",
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
 
-  appId: "1:384860053389:web:b6196982bfc4ad00b467c4",
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
