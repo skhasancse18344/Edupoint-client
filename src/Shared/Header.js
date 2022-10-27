@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Image } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -8,6 +8,8 @@ import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
 import navIcon from "../Shared/download.png";
 import { FaUser } from "react-icons/fa";
 import DarkModeToggle from "react-dark-mode-toggle";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => false);
@@ -73,17 +75,24 @@ const Header = () => {
                 checked={isDarkMode}
                 size={50}
               />
-
-              {user?.photoURL ? (
-                <Image
-                  className="me-3"
-                  style={{ height: "3rem", width: "3rem" }}
-                  roundedCircle
-                  src={user?.photoURL}
-                ></Image>
-              ) : (
-                <FaUser className="text-white fs-3"></FaUser>
-              )}
+              <OverlayTrigger
+                placement="bottom"
+                overlay={
+                  <Tooltip id="tooltip-disabled">{user?.displayName}</Tooltip>
+                }
+              >
+                {user?.photoURL ? (
+                  <Image
+                    data-tip="hello world"
+                    className="me-3"
+                    style={{ height: "3rem", width: "3rem" }}
+                    roundedCircle
+                    src={user?.photoURL}
+                  ></Image>
+                ) : (
+                  <FaUser className="text-white fs-3"></FaUser>
+                )}
+              </OverlayTrigger>
 
               {user?.uid ? (
                 <>
